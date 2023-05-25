@@ -1,0 +1,60 @@
+@page
+@model SistemaDeClinicas._Pages_Consultas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+@functions{
+    void MostrarPrecio(double Precio)
+    {
+        if (Precio > 0)
+        {
+            <span>@Precio.ToString("c",new System.Globalization.CultureInfo("es-AR"))</span>
+        }
+        else
+        {
+            <span>Sin costo</span>
+        }
+    }
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Paciente</th> 
+                <th>Medico</th> 
+                <th>Costo</th>
+                <th>Tipo de Consulta</th>
+                <th>Descripcion</th>
+                <th>Costo de Material</th>   
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Consulta.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@Html.DisplayFor(model => model.Consulta.Paciente.NombreCompleto)</td>
+                <td>@Html.DisplayFor(model => model.Consulta.Medico.NombreCompleto)</td>
+                <td>
+                    @{
+                        MostrarPrecio(Model.Consulta.Costo);
+                    }
+                </td>
+                <td>@(Model.Consulta.ConsolturioOPractica ? "Consultorio" : "Practica")</td>
+                <td>@Html.DisplayFor(model => model.Consulta.Descripcion)</td>
+                <td>
+                    @{
+                        MostrarPrecio(Model.Consulta.CostoMaterialDescartable);
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Consulta?.IdConsulta" class="btn btn-warning btn-sm">Editar</a> |
+    <a asp-page="./Index" class="btn btn-primary btn-sm">Volver al Listado</a>
+</div>

@@ -1,0 +1,78 @@
+@page
+@model SistemaDeClinicas._Pages_Consultas.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@functions{
+    void MostrarPrecio(double Precio)
+    {
+        if (Precio > 0)
+        {
+            <span>@Precio.ToString("c",new System.Globalization.CultureInfo("es-AR"))</span>
+        }
+        else
+        {
+            <span>Sin costo de Material</span>
+        }
+    }
+}
+
+<div class="container">
+    <h4>Consulta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Consulta.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consulta.Fecha)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Consulta.Costo)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                MostrarPrecio(Model.Consulta.Costo);
+            }
+        </dd>
+        <dt class="col-sm-6">
+           Tipo de Consulta
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Consulta.ConsolturioOPractica ? "Consultorio" : "Practica")
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Consulta.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consulta.Descripcion)
+        </dd>
+        <dt class="col-sm-6">
+            Costo del Material Descartable
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                MostrarPrecio(Model.Consulta.CostoMaterialDescartable);
+            }
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Consulta.Medico)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consulta.Medico.NombreCompleto)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Consulta.Paciente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consulta.Paciente.NombreCompleto)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Consulta.IdConsulta" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-primary btn-sm">Volver al Listado</a>
+    </form>
+</div>

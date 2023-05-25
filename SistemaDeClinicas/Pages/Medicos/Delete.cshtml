@@ -1,0 +1,49 @@
+@page
+@model SistemaDeClinicas._Pages_Medicos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <h4 class="text-info text-center">Eliminar al Medico @Html.DisplayFor(x => x.Medico.NombreCompleto)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Medico.Matricula)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Medico.Matricula)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Medico.Especialidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Medico.Especialidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Medico.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Medico.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Medico.Apellido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Medico.Apellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Medico.NroDoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Medico.NroDoc)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Medico.idMedico" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-primary btn-sm">Volver al Listado</a>
+    </form>
+</div>

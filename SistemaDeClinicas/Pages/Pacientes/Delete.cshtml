@@ -1,0 +1,44 @@
+@page
+@model SistemaDeClinicas._Pages_Pacientes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="container">
+    <h4 class="text-info text-center">Eliminar al Paciente @Html.DisplayFor(x => x.Paciente.NombreCompleto)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paciente.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paciente.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paciente.Apellido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paciente.Apellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paciente.NroDoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paciente.NroDoc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paciente.NroHistoriaClinica)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paciente.NroHistoriaClinica)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Paciente.idPaciente" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-primary btn-sm">Volver al Listado</a>
+    </form>
+</div>

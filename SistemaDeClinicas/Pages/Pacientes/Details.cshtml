@@ -1,0 +1,64 @@
+@page
+@model SistemaDeClinicas._Pages_Pacientes.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+@functions{
+
+    void MostrarPrecio(double Precio)
+    {
+        if (Precio > 0)
+        {
+            <span>@Precio.ToString("c",new System.Globalization.CultureInfo("es-AR"))</span>
+        }
+        else
+        {
+            <span>Sin costo de Material</span>
+        }
+    }
+}
+
+
+<div>
+
+    <h4 class="text-info text-center">Detalles de las Consultas del Paciente @Html.DisplayFor(x => x.Paciente.NombreCompleto)</h4>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Costo</th>
+                <th>Tipo de Consulta</th>
+                <th>Descripcion</th>
+                <th>Costo Material Descartable</th>
+                <th>Medico</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consulta in Model.Consultas)
+            {
+                <tr>
+                    <td>@consulta.Fecha.ToShortDateString()</td>
+                    <td>
+                        @{
+                            MostrarPrecio(consulta.Costo);
+                        }
+                    </td>
+                    <td>@(consulta.ConsolturioOPractica ? "Consultorio" : "Practica")</td>
+                    <td>@consulta.Descripcion</td>
+                    <td>
+                        @{
+                            MostrarPrecio(consulta.CostoMaterialDescartable);
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => consulta.Medico.NombreCompleto)</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div> |
+    <a asp-page="./Index" class="btn btn-primary btn-sm">Volver al Listado</a>
+</div>

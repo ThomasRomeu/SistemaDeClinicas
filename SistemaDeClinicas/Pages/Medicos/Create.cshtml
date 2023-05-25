@@ -1,0 +1,58 @@
+@page
+@model SistemaDeClinicas._Pages_Medicos.CreateModel
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}
+
+@{
+    ViewData["Title"] = "Crear Medico";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h4 class="text-center text-info">Crear Medico</h4>
+                
+                <form method="post" class="row g-3">
+                   
+                    
+                    <div class="col-md-8">
+                        <label class="form-label" asp-for="Medico.Nombre">Nombre</label>
+                        <input class="form-control" asp-for="Medico.Nombre" />
+                        <span class="badge bg-danger" asp-validation-for="Medico.Nombre" ></span>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <label class="form-label" asp-for="Medico.Apellido">Apellido</label>
+                        <input class="form-control" asp-for="Medico.Apellido" />
+                        <span class="badge bg-danger" asp-validation-for="Medico.Apellido" ></span>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <label class="form-label" asp-for="Medico.NroDoc">Nro de Documento</label>
+                        <input class="form-control" asp-for="Medico.NroDoc" />
+                        <span class="badge bg-danger" asp-validation-for="Medico.NroDoc" ></span>
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="form-label" asp-for="Medico.Matricula">Matricula</label>
+                        <input class="form-control" asp-for="Medico.Matricula" />
+                        <span class="badge bg-danger" asp-validation-for="Medico.Matricula" ></span>
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="form-label" asp-for="Medico.Especialidad">Especialidad</label>
+                        <input class="form-control" asp-for="Medico.Especialidad" />
+                        <span class="badge bg-danger" asp-validation-for="Medico.Especialidad" ></span>
+                    </div>
+                                                           
+                    <div >
+                        <input class="btn btn-success btn-sm" type="submit" value="Guardar" />
+                    </div>
+
+                </form>
+        </div>
+    </div>
+    <a asp-page="Index" class="btn btn-primary btn-sm">Volver al listado</a>
+</div>
+

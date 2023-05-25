@@ -1,0 +1,78 @@
+@page
+@model SistemaDeClinicas._Pages_Consultas.CreateModel
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}
+
+@{
+    ViewData["Title"] = "Crear Consulta";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h4 class="text-center text-info">Crear Consulta</h4>
+                
+                <form method="post" class="row g-3">
+                   
+                    
+                    <div class="col-md-4">
+                        <label class="form-label" asp-for="Consulta.Fecha">Fecha de la Consulta</label>
+                        <input class="form-control" asp-for="Consulta.Fecha" />
+                        <span class="badge bg-danger" asp-validation-for="Consulta.Fecha" ></span>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <label class="form-label" asp-for="Consulta.Costo">Costo</label>
+                        <input class="form-control" asp-for="Consulta.Costo" />
+                        <span class="badge bg-danger" asp-validation-for="Consulta.Costo" ></span>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label" asp-for="Consulta.MedicoId">Medico</label>
+                        <select class="form-select" asp-for="Consulta.MedicoId" asp-items="Model.MedicosLista">
+                                                      
+                        </select>
+                        <span class="badge bg-danger" asp-validation-for="Consulta.MedicoId" ></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label" asp-for="Consulta.PacienteId">Paciente</label>
+                        <select class="form-select" asp-for="Consulta.PacienteId" asp-items="Model.PacientesLista">
+                                                      
+                        </select>
+                        <span class="badge bg-danger" asp-validation-for="Consulta.PacienteId" ></span>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label" asp-for="Consulta.ConsolturioOPractica">Tipo de Consulta</label>
+                        <select asp-for="Consulta.ConsolturioOPractica" class="form-control">
+                            <option value="true">Consultorio</option>
+                            <option value="false">Práctica</option>
+                        </select>
+                        <span class="badge bg-danger" asp-validation-for="Consulta.ConsolturioOPractica" ></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label" asp-for="Consulta.CostoMaterialDescartable">Costo del Material Descartable</label>
+                        <input class="form-control" asp-for="Consulta.CostoMaterialDescartable" />
+                        <span class="badge bg-danger" asp-validation-for="Consulta.CostoMaterialDescartable" ></span>
+                    </div>
+
+                    <div class="col-md-10">
+                        <label class="form-label" asp-for="Consulta.Descripcion">Descripcion</label>
+                        <input class="form-control" asp-for="Consulta.Descripcion" />
+                        <span class="badge bg-danger" asp-validation-for="Consulta.Descripcion" ></span>
+                    </div>
+                                                           
+                    <div >
+                        <input class="btn btn-success btn-sm" type="submit" value="Guardar" />
+                    </div>
+
+                </form>
+        </div>
+    </div>
+    <a asp-page="Index" class="btn btn-primary btn-sm">Volver al listado</a>
+</div>
+
+
